@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, KeyboardAvoidingView } from 'react-native';
 import { GiftedChat } from 'react-native-gifted-chat';
 import Fire from '../../Fire';
-import Header from '../components/common/Header';
 
 
 const ChatScreen = ({ navigation }) => {
@@ -38,12 +37,5 @@ const styles = StyleSheet.create({
 
 });
 
-ChatScreen.navigationOptions = ({ navigation }) => {
-    return {
-        headerTitle: () => (
-            <Header onPress={() => navigation.navigate('Home')} />
-        ),
-    };
-};
 
 export default ChatScreen;

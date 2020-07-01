@@ -1,8 +1,5 @@
 import React, { useReducer, useState } from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
-import Button from '../components/common/Button';
-import { Feather } from '@expo/vector-icons';
-import Header from '../components/common/Header';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image } from 'react-native';
 
 const HomeScreen = ({ navigation }) => {
     const [chatList, setChatList] = useState({});
@@ -13,48 +10,66 @@ const HomeScreen = ({ navigation }) => {
 
     return (
         <View style={styles.background}>
-            <Text style={styles.title}>Chats: </Text>
+            <Text style={styles.title}>Messages </Text>
             <TouchableOpacity onPress={onPress}>
                 <View style={styles.row}>
-                    <Text style={styles.title}>Chat Name</Text>
-                    <TouchableOpacity onPress={() => { console.log('delete pressed'); }}>
-                        <Feather style={styles.icon} name="trash-2" color="black" />
-                    </TouchableOpacity>
+                    <Image style={styles.chatIcon} source={{ uri: 'https://i.picsum.photos/id/1022/200/200.jpg?hmac=MjK2sur6luq2UfxMPWBFBuPyvZYyYLYvQH9kCmEGJRY' }} />
+                    <View style={styles.col}>
+                        <Text style={styles.chatName}>Chat Name</Text>
+                        <Text style={styles.lastSent}>Wow that sounds crazy!</Text>
+
+                    </View>
                 </View>
             </TouchableOpacity>
 
-        </View>
+        </View >
     );
 };
 
-HomeScreen.navigationOptions = ({
-    headerStyle: {
-        backgroundColor: '#003f5c'
-    },
-    headerTitle: () => (<Header />)
-});
 
 const styles = StyleSheet.create({
     background: {
-        backgroundColor: '#003f5c',
+        backgroundColor: '#ffffff',
         flex: 1
     },
     row: {
         height: 100,
         flexDirection: "row",
-        justifyContent: 'space-between',
-        borderBottomWidth: 1,
+        justifyContent: "flex-start",
         paddingVertical: 20,
         alignItems: "center"
+
+    },
+    col: {
+        flexDirection: "column"
     },
     title: {
-        fontSize: 18,
+        fontSize: 15,
         paddingLeft: 10,
-        textAlign: "center"
+        textAlign: "left",
+        fontWeight: "bold",
+        color: '#003f5c',
+        marginTop: 15
     },
     icon: {
-        fontSize: 24,
+        fontSize: 27,
         paddingRight: 10
+    },
+    chatIcon: {
+        width: 70,
+        height: 70,
+        marginLeft: 14,
+        borderWidth: 1
+    },
+    chatName: {
+        fontSize: 18,
+        paddingLeft: 10,
+        fontWeight: "bold",
+        color: '#000000'
+    },
+    lastSent: {
+        paddingLeft: 10,
+        color: '#808080'
     }
 });
 export default HomeScreen;

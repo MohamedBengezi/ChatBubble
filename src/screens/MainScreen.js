@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TextInput } from 'react-native';
 import Button from '../components/common/Button';
-import Input from '../components/common/Input';
 
 
 const MainScreen = ({ navigation }) => {
@@ -9,7 +8,7 @@ const MainScreen = ({ navigation }) => {
     const { name } = state;
 
     const onPress = () => {
-        navigation.navigate('Chat', { name })
+        navigation.navigate('Home', { name })
     };
 
     const onChangeText = name => setState({ name })

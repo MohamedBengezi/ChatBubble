@@ -4,7 +4,9 @@ import { createStackNavigator } from 'react-navigation-stack';
 import MainScreen from './src/screens/MainScreen';
 import ChatScreen from './src/screens/ChatScreen';
 import HomeScreen from './src/screens/HomeScreen';
-
+import Header from './src/components/Header';
+import HeaderLeft from './src/components/HeaderLeft';
+import HeaderRight from './src/components/HeaderRight';
 
 const navigator = createStackNavigator(
   {
@@ -14,8 +16,15 @@ const navigator = createStackNavigator(
   },
   {
     initialRouteName: 'Main',
-    defaultNavigationOptions: {
-      title: 'Welcome'
+    defaultNavigationOptions: ({ navigation }) => {
+      return {
+        headerStyle: {
+          backgroundColor: '#ffffff',
+        },
+        headerTitle: () => (<Header />),
+        headerLeft: () => (<HeaderLeft />),
+        headerRight: () => (<HeaderRight />)
+      }
     }
   }
 );
